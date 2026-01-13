@@ -1,0 +1,47 @@
+.simple-button {
+    display: flex;
+    align-items: center;
+
+    width: 298px;
+    height: 50px;
+    padding: 0 20px;
+    margin-bottom: 12px;
+
+    background-color: #f4f6f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover */
+.simple-button:hover {
+    background-color: #2563eb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen */
+.simple-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+/* Texto */
+.simple-button span {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Texto blanco al hover */
+.simple-button:hover span {
+    color: #fff;
+}
+
+/* Último botón sin margen */
+.simple-button:last-child {
+    margin-bottom: 0;
+}
