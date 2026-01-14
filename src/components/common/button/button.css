@@ -1,47 +1,63 @@
-.simple-button {
+.custom-button {
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
+   
     width: 298px;
     height: 50px;
-    padding: 0 20px;
-    margin-bottom: 12px;
-
-    background-color: #f4f6f8;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-
+    padding: 0 25px; /* Un poco más de espacio interno lateral */
+    margin-bottom: 15px; /* SEPARACIÓN ENTRE BOTONES (Arriba/Abajo) */
+   
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
-
-/* Hover */
-.simple-button:hover {
-    background-color: #2563eb;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+ 
+.custom-button:hover {
+    background-color: #40b981;
+    box-shadow: 0 6px 15px rgba(64, 185, 129, 0.3);
+    transform: translateY(-2px);
 }
-
-/* Imagen */
-.simple-button img {
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
-}
-
-/* Texto */
-.simple-button span {
-    font-family: Arial, sans-serif;
-    font-size: 15px;
+ 
+.button-text {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
     font-weight: bold;
     color: #333;
+   
+    /* Para que el texto no se pegue a la imagen si es largo */
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 15px; /* Espacio entre la imagen y el texto */
+   
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
-/* Texto blanco al hover */
-.simple-button:hover span {
-    color: #fff;
+ 
+.custom-button:hover .button-text {
+    color: white;
 }
-
-/* Último botón sin margen */
-.simple-button:last-child {
+ 
+.button-image img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    flex-shrink: 0; /* Evita que la imagen se aplaste si el texto es largo */
+}
+ 
+.custom-button:hover .button-image img {
+    filter: brightness(0) invert(1);
+}
+ 
+/* Evita que el último botón tenga margen innecesario abajo */
+.custom-button:last-child {
     margin-bottom: 0;
 }
+ 
