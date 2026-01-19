@@ -1,63 +1,48 @@
-.custom-button {
+#id { 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-   
-    width: 298px;
-    height: 50px;
-    padding: 0 25px; /* Un poco más de espacio interno lateral */
-    margin-bottom: 15px; /* SEPARACIÓN ENTRE BOTONES (Arriba/Abajo) */
-   
-    background-color: #fff;
-    border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   
-    border-radius: 10px;
+    justify-content: center;
+
+    width: 220px;
+    height: 56px;
+
+    background-color: #ffffff;       /* blanco */
+    border: 1px solid #d1d5db;        /* gris claro */
+    border-radius: 6px;
+    padding: 0 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    gap: 12px;
+    user-select: none;
 }
- 
-.custom-button:hover {
-    background-color: #40b981;
-    box-shadow: 0 6px 15px rgba(64, 185, 129, 0.3);
-    transform: translateY(-2px);
+
+#id:hover {
+    background-color: #f3f4f6;       /* gris muy suave */
+    border-color: #9ca3af;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
 }
- 
+
+#id:active {
+    background-color: #e5e7eb;
+    transform: translateY(0);
+}
+
+/* Contenedor de la imagen */
+.button-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+/* Texto */
 .button-text {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-   
-    /* Para que el texto no se pegue a la imagen si es largo */
-    flex-grow: 1;
-    text-align: left;
-    margin-left: 15px; /* Espacio entre la imagen y el texto */
-   
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;                  /* gris oscuro */
 }
- 
-.custom-button:hover .button-text {
-    color: white;
-}
- 
-.button-image img {
-    width: 22px;
-    height: 22px;
-    display: block;
-    flex-shrink: 0; /* Evita que la imagen se aplaste si el texto es largo */
-}
- 
-.custom-button:hover .button-image img {
-    filter: brightness(0) invert(1);
-}
- 
-/* Evita que el último botón tenga margen innecesario abajo */
-.custom-button:last-child {
-    margin-bottom: 0;
-}
- 
