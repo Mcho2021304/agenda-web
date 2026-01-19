@@ -7,6 +7,7 @@ let Button = (title, id, img, callback) => {
 
     let imgIcon = document.createElement("img");
     imgIcon.src = `./assets/icons/${img}`;
+    imgIcon.alt = title;
     divImage.appendChild(imgIcon);
 
     let p = document.createElement("p");
@@ -18,7 +19,7 @@ let Button = (title, id, img, callback) => {
 
     div.addEventListener("click", () => {
         callback(); 
-        console.log("seccion completada");
+        console.log("Seccion completada");
     });
 
     return div;
