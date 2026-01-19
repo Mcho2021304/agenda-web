@@ -1,0 +1,71 @@
+/* Contenedor principal */
+section {
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 40px auto;
+}
+
+/* Título */
+h3 {
+    margin: 0 0 12px 0;
+    text-align: center;
+    color: #1f2933;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #9ca3af;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #6b7280;
+    box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.15);
+}
+
+/* Botón */
+button {
+    background-color: #374151;       /* gris oscuro neutro */
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    margin-top: 12px;
+}
+
+button:hover {
+    background-color: #1f2937;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}

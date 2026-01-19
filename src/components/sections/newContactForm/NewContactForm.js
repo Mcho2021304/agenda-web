@@ -1,43 +1,50 @@
-import { ContactList } from "../contactos/db.js";
- 
-let NuevoContacto = () => {
-    let sectionNuevoContacto = document.createElement("section");
-    sectionNuevoContacto.className = "nuevo-contacto";
- 
-    // Título
-    let h2 = document.createElement("h2");
-    h2.textContent = "Añadir Contacto";
- 
-    // Formulario
+import { Contactos } from "../contactos/db.js";
+function ContactList(fuction){
+    
     let form = document.createElement("form");
- 
-    // Input Nombre
+    form.className = "new-contact-form";
+
+    let title = document.createElement("h2");
+    title.textContent = "Nuevo Contacto";
+    form.appendChild(title);
+
+    let labelNombre = document.createElement("label");
+    labelNombre.textContent = "Nombre: ";
+    labelNombre.htmlFor = "nombre";
+
     let inputNombre = document.createElement("input");
     inputNombre.type = "text";
     inputNombre.placeholder = "Nombre";
     inputNombre.name = "nombre";
     inputNombre.required = true;
- 
-    // Input Teléfono
+    inputNombre.placeholder = "Ingrese el nombre";
+
+    let labelTelefono = document.createElement("label");
+    labelTelefono.textContent = "Telfono: ";
+    labelTelefono.htmlFor = "Telefono";
+
     let inputTelefono = document.createElement("input");
     inputTelefono.type = "tel";
     inputTelefono.placeholder = "Teléfono";
     inputTelefono.name = "telefono";
     inputTelefono.required = true;
- 
-    // Botón Agregar
+    inputTelefono.placeholder = "Ej: 12346689";
+
     let btnAgregar = document.createElement("button");
-    btnAgregar.type = "submit";
+    btnAgregar.type = "submit"
     btnAgregar.textContent = "Agregar";
- 
-    // Estructura
+
+    let btnCancelar = document.createElement("button");
+    btnCancelar.type = "button"
+    btnCancelar.textContent = "Cancelar";
+
+    form.appendChild(labelNombre);
     form.appendChild(inputNombre);
+    form.appendChild(labelTelefono);
     form.appendChild(inputTelefono);
     form.appendChild(btnAgregar);
- 
-    sectionNuevoContacto.appendChild(h2);
-    sectionNuevoContacto.appendChild(form);
- 
+    form.appendChild(btnCancelar);
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         let contacto = {
@@ -51,7 +58,9 @@ let NuevoContacto = () => {
     });
  
     return sectionNuevoContacto;
-};
+
+}
+
  
 export { NuevoContacto };
  
