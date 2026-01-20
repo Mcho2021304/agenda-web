@@ -1,6 +1,6 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/sections/contactos/Contactos.js";
-import { viewContacts, viewnewContact, TareasList } from "./components/layout/nav/NavControlers.js";
+import { viewContacts, viewnewContact, TareasList, viewTareas} from "./components/layout/nav/NavControlers.js";
 
 
 //App
@@ -25,7 +25,8 @@ nav.appendChild(Button("Crear Contacto",
 
 nav.appendChild(Button("ToDoList", 
     "todoList", 
-    "list.svg"
+    "list.svg",
+    viewTareas
 ));
 
 nav.appendChild(Button("Crear Tarea", 
