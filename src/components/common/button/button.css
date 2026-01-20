@@ -1,48 +1,58 @@
-#id { 
+/* Botón principal */
+.custom-button {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
+    align-items: center;          /* centra verticalmente */
+    justify-content: center;      /* centra horizontalmente */
+    position: relative;           /* para posicionar elementos dentro */
     width: 220px;
     height: 56px;
-
-    background-color: #ffffff;       /* blanco */
-    border: 1px solid #d1d5db;        /* gris claro */
-    border-radius: 6px;
+    border-radius: 10px;
     padding: 0 20px;
+
+    background: linear-gradient(135deg, #60a5fa, #2563eb);
+    border: 2px solid #60a5fa;
+    color: #ecfeff;
+    font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
-
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    gap: 12px;
     user-select: none;
+
+    box-shadow: 0 4px 8px rgba(255,255,255,0.2), 0 0 15px rgba(255,255,255,0.1);
+    transition: all 0.2s ease;
 }
 
-#id:hover {
-    background-color: #f3f4f6;       /* gris muy suave */
-    border-color: #9ca3af;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-    transform: translateY(-1px);
+/* Hover */
+.custom-button:hover {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    border-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.15);
+    transform: translateY(-2px);
 }
 
-#id:active {
-    background-color: #e5e7eb;
+/* Active */
+.custom-button:active {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    border-color: #e5e7eb;
+    box-shadow: 0 2px 6px rgba(255,255,255,0.15), inset 0 0 8px rgba(255,255,255,0.05);
     transform: translateY(0);
 }
 
-/* Contenedor de la imagen */
+/* Imagen dentro del botón */
 .button-image {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 24px;
     height: 24px;
+    position: absolute; /* posicionamos a la izquierda del botón */
+    left: 20px;
 }
 
-/* Texto */
+/* Texto centrado */
 .button-text {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
     font-size: 15px;
-    font-weight: 600;
-    color: #374151;                  /* gris oscuro */
+    color: inherit;
+    text-align: center;
+    flex: 1; /* ocupa todo el espacio disponible */
 }

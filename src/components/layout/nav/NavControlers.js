@@ -1,16 +1,25 @@
-import { Contactos } from "../../sections/contactos/Contactos";
-import { NewContactForm } from "../../sections/newContactForm/NewContactForm";
+import { Contactos } from "../../sections/contactos/Contactos.js";
+import { Formulario } from "../../sections/newContactForm/NewContactForm.js";
+import { FormularioTareas } from "../../sections/newTareas/newTareas.js";
 
 let container = document.getElementById("container");
+
 let viewContacts = function () {
     container.innerHTML = "";
     container.appendChild(Contactos());
 }
 
-let viewContact = function () {
+let viewnewContact = function () {
     container.innerHTML = "";
-    container.appendChild(NewContactForm());
+    container.appendChild(Formulario());
 
 }
 
-export { viewContacts, viewContact}
+let TareasList = function () {
+    container.innerHTML = "";
+    container.appendChild(FormularioTareas());
+
+}
+
+
+export { viewContacts, viewnewContact, TareasList}

@@ -6,8 +6,8 @@
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-/* Formulario general */
-.new-contact-form {
+/* Formulario de tareas */
+.new-task-form {
     width: 100%;
     max-width: 400px;
     background-color: #1e293b; /* azul gris oscuro */
@@ -22,31 +22,29 @@
     transition: all 0.3s ease;
 }
 
-.new-contact-form:hover {
+.new-task-form:hover {
     box-shadow: 0 6px 25px rgba(0,0,0,0.4);
 }
 
 /* Título del formulario */
-.new-contact-form h2 {
+.new-task-form h2 {
     font-size: 24px;
-    color: #ffffff; /* azul brillante */
+    color: #ffffff; /* blanco */
     text-align: center;
     margin-bottom: 10px;
-    text-shadow: 
-        0 0 3px #b0b0b0,   /* difuminado gris suave */
-        0 0 6px #888888;   /* difuminado más amplio */
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3); /* difuminado sutil */
 }
 
-
 /* Labels */
-.new-contact-form label {
+.new-task-form label {
     font-size: 14px;
     margin-bottom: 4px;
     color: #cbd5e1; /* gris claro */
 }
 
-/* Inputs */
-.new-contact-form input {
+/* Inputs y select */
+.new-task-form input,
+.new-task-form select {
     padding: 10px 12px;
     border-radius: 8px;
     border: 1px solid #64748b; /* gris azuloso */
@@ -56,14 +54,15 @@
     transition: all 0.2s ease;
 }
 
-.new-contact-form input:focus {
+.new-task-form input:focus,
+.new-task-form select:focus {
     border-color: #38bdf8; /* azul brillante al enfocar */
     box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
     outline: none;
 }
 
 /* Botones */
-.new-contact-form button {
+.new-task-form button {
     padding: 12px;
     border-radius: 8px;
     border: none;
@@ -74,35 +73,37 @@
 }
 
 /* Botón Agregar */
-.new-contact-form button[type="submit"] {
-    background-color: #22c55e; /* verde llamativo */
+.new-task-form button[type="submit"] {
+    background: linear-gradient(135deg, #22c55e, #16a34a); /* verde degradado */
     color: #ffffff;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
 }
 
-.new-contact-form button[type="submit"]:hover {
-    background-color: #16a34a;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.5);
+.new-task-form button[type="submit"]:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.6);
 }
 
 /* Botón Cancelar */
-.new-contact-form button[type="button"] {
-    background-color: #ef4444; /* rojo suave */
+.new-task-form button[type="button"] {
+    background: linear-gradient(135deg, #ef4444, #b91c1c); /* rojo degradado */
     color: #ffffff;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
 }
 
-.new-contact-form button[type="button"]:hover {
-    background-color: #b91c1c;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+.new-task-form button[type="button"]:hover {
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.6);
 }
 
 /* Espaciado entre botones */
-.new-contact-form button + button {
+.new-task-form button + button {
     margin-top: 8px;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
-    .new-contact-form {
+    .new-task-form {
         padding: 20px;
     }
 }
