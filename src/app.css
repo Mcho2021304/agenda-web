@@ -1,28 +1,169 @@
-*{
+/* Reset */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
+/* Fondo general */
+body {
+    background: radial-gradient(circle at top, #0f1c3f, #020617);
+    color: #f8fafc;
+}
+
+/* Layout principal */
 #app {
     width: 100vw;
     height: 100vh;
-    
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 10px;
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+    padding: 16px;
 }
 
+/* NAV (Azul neón) */
 #nav {
-    height: 100vh;
-    border: 1px solid #000;
-
+    background: linear-gradient(180deg, #0b3c5d, #020617);
+    border-radius: 14px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
+    border: 1px solid rgba(96, 165, 250, 0.8);
+    box-shadow:
+        0 0 20px rgba(96, 165, 250, 1),
+        0 0 45px rgba(96, 165, 250, 0.5),
+        inset 0 0 16px rgba(147, 197, 253, 0.3);
 }
 
+/* Items del nav */
+#nav > div {
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(147, 197, 253, 0.8);
+    color: #e0f2fe;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+#nav > div:hover {
+    background: rgba(96, 165, 250, 0.35);
+    box-shadow:
+        0 0 10px rgba(96, 165, 250, 1),
+        0 0 22px rgba(96, 165, 250, 0.8);
+}
+
+/* CONTENEDOR PRINCIPAL (Verde neón) */
 #container {
-    height: 100vh;
-    border: 1px solid #000;
+    background: linear-gradient(135deg, #020617, #022c22);
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid rgba(34, 197, 94, 0.9);
+    box-shadow:
+        0 0 20px rgba(34, 197, 94, 1),
+        0 0 45px rgba(34, 197, 94, 0.55),
+        inset 0 0 16px rgba(74, 222, 128, 0.3);
+    overflow-y: auto; /* Scroll si el contenido crece */
+}
+
+/* Títulos */
+h1, h2 {
+    color: #4ade80;
+    text-shadow:
+        0 0 10px rgba(34, 197, 94, 1),
+        0 0 22px rgba(34, 197, 94, 0.9);
+}
+
+/* Texto */
+p {
+    color: #ecfeff;
+    line-height: 1.7;
+}
+
+/* Scrollbar neón */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#60a5fa, #22c55e);
+    border-radius: 10px;
+}
+
+/* ===========================
+   Media Queries para responsividad
+   =========================== */
+
+/* Pantallas medianas */
+@media (max-width: 1024px) {
+    #app {
+        grid-template-columns: 200px 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    #nav {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    #container {
+        padding: 20px;
+        border-radius: 12px;
+    }
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 768px) {
+    #app {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    #nav {
+        flex-direction: row;
+        overflow-x: auto;
+        border-radius: 10px;
+        gap: 8px;
+    }
+
+    #nav > div {
+        flex: 0 0 auto; /* que los items no se encojan */
+        min-width: 120px;
+        text-align: center;
+    }
+
+    #container {
+        padding: 16px;
+        border-radius: 10px;
+    }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 480px) {
+    #app {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    #nav {
+        padding: 8px;
+        gap: 6px;
+    }
+
+    #container {
+        padding: 12px;
+    }
+
+    h1, h2 {
+        font-size: 18px;
+    }
+
+    #nav > div {
+        font-size: 14px;
+        padding: 10px;
+    }
 }
