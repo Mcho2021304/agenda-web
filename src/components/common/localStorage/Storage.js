@@ -1,14 +1,23 @@
-const LOCAL_STORAGE_KEY = 'agenda_telefonica';
+const LOCAL_STORAGE_KEY_CONTACTS = 'agenda_telefonica';
+const LOCAL_STORAGE_KEY_TASKS = 'lista_de_tareas';
 
 function saveContactsToStrorage(contactos){
     localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(contactos));
 }
 
-function getContactsFromStorage(){
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+function saveTareasToStorage(tareas){
+    localStorage.setItem(LOCAL_STORAGE_KEY_TASKS,JSON.stringify(tareas));
 }
 
-export {LOCAL_STORAGE_KEY, getContactsFromStorage, saveContactsToStrorage}
+function getContactsFromStorage(){
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_CONTACTS)) || [];
+}
+
+function getTareasFromStorage(){
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TASKS)) || [];
+}
+
+export {LOCAL_STORAGE_KEY_CONTACTS, LOCAL_STORAGE_KEY_TASKS, getContactsFromStorage, saveContactsToStrorage, getTareasFromStorage, saveTareasToStorage}
 
 
     

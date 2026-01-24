@@ -69,3 +69,10 @@ button:hover {
 button:active {
     transform: translateY(0);
 }
+
+.login-link {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
