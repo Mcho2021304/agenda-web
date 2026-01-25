@@ -1,4 +1,4 @@
-import { login } from "./src/components/sections/login/Login.js";
+import { login } from "./src/components/sections/Login/Login.js";
 
 let root = document.getElementById("root");
 
