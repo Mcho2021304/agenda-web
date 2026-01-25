@@ -1,8 +1,62 @@
 .contactos {
     width: 100%;
     padding: 10px;
-
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    color: #000; /* letras negras */
+}
+
+.item-contacto {
+    font-family: monospace;
+    font-size: 1.25rem;
+    border-radius: 1rem;
+    border-left: 6px solid #3b82f6; /* rayita azul */
+    background-color: #f8fafc;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    align-items: center;
+}
+
+/* Hover */
+.item-contacto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Icono */
+.contacto-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Nombre y teléfono */
+.contacto-nombre {
+    font-weight: 600;
+    color: #000; /* negro */
+}
+
+.contacto-telefono {
+    color: #555;
+}
+
+/* Botón detalle */
+.btn-ver-contacto {
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.btn-ver-contacto:hover {
+    background-color: #2563eb;
 }

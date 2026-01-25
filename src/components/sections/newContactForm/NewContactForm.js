@@ -1,65 +1,68 @@
+import { saveContactsToStorage } from "../../common/localStorage/Storage.js";
 import { ContactList } from "../contactos/db.js";
 
-let Formulario = () => {
-    let form = document.createElement("form");
-    form.className = "new-contact-form";
+const Formulario = () => {
+    const form = document.createElement("form");
+    form.classList.add("new-contact-form");
 
-    let title = document.createElement("h2");
+    const title = document.createElement("h2");
     title.textContent = "Nuevo Contacto";
-    form.appendChild(title);
 
-    let labelNombre = document.createElement("label");
-    labelNombre.textContent = "Nombre: ";
-    labelNombre.htmlFor = "nombre";
+    const labelNombre = document.createElement("label");
+    labelNombre.textContent = "Nombre";
 
-    let inputNombre = document.createElement("input");
+    const inputNombre = document.createElement("input");
     inputNombre.type = "text";
-    inputNombre.name = "nombre";
-    inputNombre.required = true;
     inputNombre.placeholder = "Ingrese el nombre";
+    inputNombre.required = true;
 
-    let labelTelefono = document.createElement("label");
-    labelTelefono.textContent = "Teléfono: ";
-    labelTelefono.htmlFor = "telefono";
+    const labelTelefono = document.createElement("label");
+    labelTelefono.textContent = "Teléfono";
 
-    let inputTelefono = document.createElement("input");
+    const inputTelefono = document.createElement("input");
     inputTelefono.type = "tel";
-    inputTelefono.name = "telefono";
+    inputTelefono.placeholder = "Ej: 12345678";
     inputTelefono.required = true;
-    inputTelefono.placeholder = "Ej: 12346689";
 
-    let btnAgregar = document.createElement("button");
+    const btnAgregar = document.createElement("button");
     btnAgregar.type = "submit";
     btnAgregar.textContent = "Agregar";
 
-    let btnCancelar = document.createElement("button");
+    const btnCancelar = document.createElement("button");
     btnCancelar.type = "button";
     btnCancelar.textContent = "Cancelar";
 
-    form.appendChild(labelNombre);
-    form.appendChild(inputNombre);
-    form.appendChild(labelTelefono);
-    form.appendChild(inputTelefono);
-    form.appendChild(btnAgregar);
-    form.appendChild(btnCancelar);
+    btnCancelar.addEventListener("click", () => {
+        form.reset();
+    });
+
+    form.append(
+        title,
+        labelNombre,
+        inputNombre,
+        labelTelefono,
+        inputTelefono,
+        btnAgregar,
+        btnCancelar
+    );
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        let contacto = {
-            nombre: inputNombre.value,
-            telefono: inputTelefono.value
+        const contacto = {
+            nombre: inputNombre.value.trim(),
+            telefono: inputTelefono.value.trim()
         };
 
-        console.log("Contacto a agregar:", contacto);
+        if (!contacto.nombre || !contacto.telefono) return;
 
-        ContactList.push(contacto); 
-        console.log("Lista actual de contactos:", ContactList);
+        ContactList.push(contacto);
+        saveContactsToStorage(ContactList);
 
-        form.reset(); 
+        form.reset();
     });
 
-    return form; 
-}
+    return form;
+};
 
-export {Formulario};
+export { Formulario };

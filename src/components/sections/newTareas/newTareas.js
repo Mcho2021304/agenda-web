@@ -1,82 +1,91 @@
-import { TareasList } from "../tareas/dbTareas.js"; 
+import { saveTareasToStorage } from "../../common/localStorage/Storage.js";
+import { TareasList } from "../tareas/dbTareas.js";
 
-let FormularioTareas = () => {
-    let form = document.createElement("form");
-    form.className = "new-task-form";
+const FormularioTareas = () => {
+    const sectionFormulario = document.createElement("section");
+    sectionFormulario.className = "formulario";
 
-    // Título del formulario
-    let title = document.createElement("h2");
-    title.textContent = "Nueva Tarea";
-    form.appendChild(title);
+    const title = document.createElement("h2");
+    title.textContent = "Nueva tarea";
 
-    // Label y input para el título de la tarea
-    let labelTitulo = document.createElement("label");
-    labelTitulo.textContent = "Título: ";
-    labelTitulo.htmlFor = "titulo";
+    const form = document.createElement("form");
+    form.classList.add("new-task-form");
 
-    let inputTitulo = document.createElement("input");
+    // ===== TÍTULO =====
+    const labelTitulo = document.createElement("label");
+    labelTitulo.textContent = "Título";
+    const inputTitulo = document.createElement("input");
     inputTitulo.type = "text";
-    inputTitulo.name = "titulo";
-    inputTitulo.required = true;
     inputTitulo.placeholder = "Ingrese el título de la tarea";
+    inputTitulo.required = true;
 
-    // Label y select para la prioridad
-    let labelPrioridad = document.createElement("label");
-    labelPrioridad.textContent = "Prioridad: ";
-    labelPrioridad.htmlFor = "prioridad";
+    // ===== DESCRIPCIÓN =====
+    const labelDescripcion = document.createElement("label");
+    labelDescripcion.textContent = "Descripción";
+    const textareaDescripcion = document.createElement("textarea");
+    textareaDescripcion.placeholder = "Describe la tarea...";
+    textareaDescripcion.required = true;
 
-    let selectPrioridad = document.createElement("select");
-    selectPrioridad.name = "prioridad";
+    // ===== PRIORIDAD =====
+    const labelPrioridad = document.createElement("label");
+    labelPrioridad.textContent = "Prioridad";
+    const selectPrioridad = document.createElement("select");
     selectPrioridad.required = true;
 
-    let opciones = ["Alta", "Media", "Baja"];
-    opciones.forEach(op => {
-        let option = document.createElement("option");
-        option.value = op.toLowerCase(); // alta, media, baja
-        option.textContent = op;
+    const optionDefault = document.createElement("option");
+    optionDefault.value = "";
+    optionDefault.textContent = "Seleccione prioridad";
+    optionDefault.disabled = true;
+    optionDefault.selected = true;
+    selectPrioridad.appendChild(optionDefault);
+
+    ["Alta", "Media", "Baja"].forEach(prioridad => {
+        const option = document.createElement("option");
+        option.value = prioridad.toLowerCase();
+        option.textContent = prioridad;
         selectPrioridad.appendChild(option);
     });
 
-    // Botones
-    let btnAgregar = document.createElement("button");
+    // ===== BOTONES =====
+    const btnAgregar = document.createElement("button");
     btnAgregar.type = "submit";
-    btnAgregar.textContent = "Agregar";
+    btnAgregar.textContent = "Guardar";
 
-    let btnCancelar = document.createElement("button");
+    const btnCancelar = document.createElement("button");
     btnCancelar.type = "button";
     btnCancelar.textContent = "Cancelar";
 
-    // Agregar elementos al form
-    form.appendChild(labelTitulo);
-    form.appendChild(inputTitulo);
-    form.appendChild(labelPrioridad);
-    form.appendChild(selectPrioridad);
-    form.appendChild(btnAgregar);
-    form.appendChild(btnCancelar);
+    btnCancelar.addEventListener("click", () => form.reset());
 
-    // Evento submit
+    form.append(
+        labelTitulo, inputTitulo,
+        labelDescripcion, textareaDescripcion,
+        labelPrioridad, selectPrioridad,
+        btnAgregar, btnCancelar
+    );
+
+    sectionFormulario.append(title, form);
+
+    // ===== SUBMIT =====
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        let tarea = {
-            titulo: inputTitulo.value,
-            prioridad: selectPrioridad.value
+        const tarea = {
+            titulo: inputTitulo.value.trim(),
+            descripcion: textareaDescripcion.value.trim(),
+            prioridad: selectPrioridad.value,
+            estado: false
         };
 
-        console.log("Tarea a agregar:", tarea);
+        if (!tarea.titulo || !tarea.descripcion || !tarea.prioridad) return;
 
-        TareasList.push(tarea); 
-        console.log("Lista actual de tareas:", TareasList);
+        TareasList.push(tarea);
+        saveTareasToStorage(TareasList);
 
-        form.reset(); 
-    });
-
-    // Cancelar resetea el formulario
-    btnCancelar.addEventListener("click", () => {
         form.reset();
     });
 
-    return form;
-}
+    return sectionFormulario;
+};
 
 export { FormularioTareas };

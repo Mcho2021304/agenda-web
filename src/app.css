@@ -1,4 +1,3 @@
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,113 +5,192 @@
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-/* Fondo general */
 body {
-    background: radial-gradient(circle at top, #0f1c3f, #020617);
-    color: #f8fafc;
+    background-color: #f2f4f7; /* gris muy claro */
+    color: #1f2937; /* gris oscuro */
+    line-height: 1.6;
 }
 
-/* Layout principal */
 #app {
-    width: 100vw;
-    height: 100vh;
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 250px 1fr; /* menú lateral + contenido */
     gap: 16px;
+    min-height: 100vh;
     padding: 16px;
 }
 
-/* NAV (Azul neón) */
+
 #nav {
-    background: linear-gradient(180deg, #0b3c5d, #020617);
-    border-radius: 14px;
+    background-color: #e0e7ff; /* azul muy suave */
+    border-radius: 8px;
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    border: 1px solid rgba(96, 165, 250, 0.8);
-    box-shadow:
-        0 0 20px rgba(96, 165, 250, 1),
-        0 0 45px rgba(96, 165, 250, 0.5),
-        inset 0 0 16px rgba(147, 197, 253, 0.3);
+    gap: 12px;
 }
 
-/* Items del nav */
 #nav > div {
-    padding: 14px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 6px;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(147, 197, 253, 0.8);
-    color: #e0f2fe;
+    background-color: #c7d2fe; /* azul claro */
+    color: #1f2937;
+    text-align: center;
+    transition: all 0.2s ease;
     font-weight: 500;
-    transition: all 0.25s ease;
 }
 
 #nav > div:hover {
-    background: rgba(96, 165, 250, 0.35);
-    box-shadow:
-        0 0 10px rgba(96, 165, 250, 1),
-        0 0 22px rgba(96, 165, 250, 0.8);
+    background-color: #a5b4fc; /* azul ligeramente más oscuro */
 }
 
-/* CONTENEDOR PRINCIPAL (Verde neón) */
+
 #container {
-    background: linear-gradient(135deg, #020617, #022c22);
-    border-radius: 14px;
-    padding: 28px;
-    border: 1px solid rgba(34, 197, 94, 0.9);
-    box-shadow:
-        0 0 20px rgba(34, 197, 94, 1),
-        0 0 45px rgba(34, 197, 94, 0.55),
-        inset 0 0 16px rgba(74, 222, 128, 0.3);
-    overflow-y: auto; /* Scroll si el contenido crece */
+    background-color: #ffffff; /* fondo claro */
+    border-radius: 8px;
+    padding: 24px;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* Títulos */
+
 h1, h2 {
-    color: #4ade80;
-    text-shadow:
-        0 0 10px rgba(34, 197, 94, 1),
-        0 0 22px rgba(34, 197, 94, 0.9);
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-weight: 600;
 }
 
-/* Texto */
+
 p {
-    color: #ecfeff;
-    line-height: 1.7;
+    color: #374151; 
 }
 
-/* Scrollbar neón */
-::-webkit-scrollbar {
-    width: 10px;
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(#60a5fa, #22c55e);
-    border-radius: 10px;
+input, textarea, select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc; /* fondo muy claro */
+    color: #1f2937;
+    font-size: 1rem;
 }
 
-/* ===========================
-   Media Queries para responsividad
-   =========================== */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #4f46e5; /* azul destacado */
+}
+
+button {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Botones principales */
+button[type="submit"] {
+    background-color: #1108b5; /* azul masculino */
+    color: #ffffff;
+}
+
+button[type="submit"]:hover {
+    background-color: #0f00af; /* azul más oscuro */
+}
+
+button[type="button"] {
+    background-color: #e5e7eb; /* gris claro */
+    color: #1f2937;
+}
+
+button[type="button"]:hover {
+    background-color: #d1d5db;
+}
+
+/* ======================
+   Lista de tareas
+====================== */
+.tareas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-tarea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #f1f5f9; /* gris suave */
+    gap: 10px;
+}
+
+.item-tarea p {
+    flex: 1;
+    color: #1f2937;
+    margin-left: 8px;
+}
+
+.btn-editar,
+.btn-eliminar {
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    color: black; /* color inicial del icono */
+}
+
+.btn-editar svg,
+.btn-eliminar svg {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.2s ease, color 0.2s ease;
+    stroke: currentColor; /* si el SVG usa stroke */
+    fill: currentColor;   /* si el SVG usa fill */
+}
+
+/* Hover: fondo azul y agrandar icono */
+.btn-editar:hover {
+    background-color: #3b82f6; /* azul */
+    color: rgb(0, 0, 0); /* icono se vuelve visible */
+}
+
+.btn-editar:hover svg {
+    transform: scale(1.2);
+}
+
+
+
+/* ======================
+   Responsive
+====================== */
 
 /* Pantallas medianas */
 @media (max-width: 1024px) {
     #app {
         grid-template-columns: 200px 1fr;
-        gap: 12px;
         padding: 12px;
     }
 
     #nav {
         padding: 12px;
-        border-radius: 12px;
+        gap: 10px;
     }
 
     #container {
         padding: 20px;
-        border-radius: 12px;
     }
 }
 
@@ -126,19 +204,16 @@ p {
     #nav {
         flex-direction: row;
         overflow-x: auto;
-        border-radius: 10px;
         gap: 8px;
     }
 
     #nav > div {
-        flex: 0 0 auto; /* que los items no se encojan */
         min-width: 120px;
-        text-align: center;
+        font-size: 14px;
     }
 
     #container {
         padding: 16px;
-        border-radius: 10px;
     }
 }
 
@@ -154,16 +229,21 @@ p {
         gap: 6px;
     }
 
-    #container {
-        padding: 12px;
-    }
-
     h1, h2 {
         font-size: 18px;
     }
 
-    #nav > div {
-        font-size: 14px;
-        padding: 10px;
+    #container {
+        padding: 12px;
+    }
+
+    input, textarea, select, button {
+        font-size: 0.9rem;
+    }
+
+    .btn-editar img,
+    .btn-eliminar img {
+        width: 32px;
+        height: 32px;
     }
 }

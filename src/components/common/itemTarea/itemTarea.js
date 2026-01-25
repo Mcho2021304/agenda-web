@@ -1,90 +1,85 @@
-import { TareasList } from "./../../sections/tareas/dbTareas.js"
-import { saveTareasToStorage } from "../localStorage/Storage.js";
+import { TareasList } from "../../sections/tareas/dbTareas.js";
+import { saveTareasToStorage } from "../../common/localStorage/Storage.js";
 
-let ItemTarea = (imgTarea, estado, titulo, descripcion, prioridad) => {
-    let div = document.createElement("div");
+const ItemTarea = (imgTarea = "default.svg", estado, titulo, descripcion, prioridad) => {
+    const div = document.createElement("div");
     div.className = "item-tarea";
 
-    // Ícono de la tarea
-    let etiquetaImg = document.createElement("img");
+    const etiquetaImg = document.createElement("img");
     etiquetaImg.src = `./assets/icons/${imgTarea}`;
     etiquetaImg.alt = "Tarea";
+    etiquetaImg.className = "tarea-icono";
 
-    // Estado
-    let etiquetaEstado = document.createElement("input")
+    const etiquetaEstado = document.createElement("input");
     etiquetaEstado.type = "checkbox";
-    etiquetaEstado.className = "tarea-estado"
+    etiquetaEstado.checked = estado;
+    etiquetaEstado.className = "tarea-estado";
 
-    // Título de la tarea
-    let etiquetaTitulo = document.createElement("p");
+    const etiquetaTitulo = document.createElement("p");
     etiquetaTitulo.textContent = titulo;
     etiquetaTitulo.className = "tarea-titulo";
 
-    //Descripcion
-    let etiquetaDescripcion = document.createElement("button");
-    etiquetaDescripcion.textContent = "Descripcion";
+    const btnDescripcion = document.createElement("button");
+    btnDescripcion.type = "button";
+    btnDescripcion.textContent = "Descripción";
+    btnDescripcion.className = "tarea-descripcion";
 
-    // Prioridad de la tarea
-    let etiquetaPrioridad = document.createElement("p");
+    const etiquetaPrioridad = document.createElement("p");
     etiquetaPrioridad.textContent = prioridad;
     etiquetaPrioridad.className = "tarea-prioridad";
 
-    let btnEditar = document.createElement("button");
+    const btnEditar = document.createElement("button");
+    btnEditar.type = "button";
     btnEditar.innerHTML = '<img src="./assets/icons/edit.svg" alt="Editar">';
+    btnEditar.className = "btn-editar";
 
-    let btnEliminar = document.createElement("button");
+    const btnEliminar = document.createElement("button");
+    btnEliminar.type = "button";
     btnEliminar.innerHTML = '<img src="./assets/icons/delete.svg" alt="Eliminar">';
+    btnEliminar.className = "btn-eliminar";
 
+    div.append(etiquetaImg, etiquetaEstado, etiquetaTitulo, btnDescripcion, etiquetaPrioridad, btnEditar, btnEliminar);
 
-    // Agregar elementos al div
-    div.appendChild(etiquetaImg);
-    div.appendChild(etiquetaEstado);
-    div.appendChild(etiquetaTitulo);
-    div.appendChild(etiquetaDescripcion);
-    div.appendChild(etiquetaPrioridad);
-    div.appendChild(btnEditar);
-    div.appendChild(btnEliminar);
+    // ===== EVENTOS =====
+    btnDescripcion.addEventListener("click", () => alert(`Descripción: ${descripcion}`));
 
-    etiquetaDescripcion.addEventListener("click", () => {
-        alert(`Descripcion: ${descripcion}`);
+    etiquetaEstado.addEventListener("change", () => {
+        const index = TareasList.findIndex(t => t.titulo === titulo);
+        if (index > -1) {
+            TareasList[index].estado = etiquetaEstado.checked;
+            saveTareasToStorage(TareasList);
+        }
     });
 
     btnEditar.addEventListener("click", () => {
-    const index = TareasList.findIndex(t => t.tarea === titulo);
-    if (index === -1) return;
+        const index = TareasList.findIndex(t => t.titulo === titulo);
+        if (index === -1) return;
 
-    const nuevoNombre = prompt("Editar nombre de la tarea:", TareasList[index].tarea);
-    if (!nuevoNombre) return;
+        const nuevoTitulo = prompt("Editar nombre de la tarea:", TareasList[index].titulo);
+        const nuevaDescripcion = prompt("Editar descripción:", TareasList[index].descripcion);
+        if (!nuevoTitulo || !nuevaDescripcion) return;
 
-    const nuevaDesc = prompt("Editar descripción:", TareasList[index].descripcion);
-    if (!nuevaDesc) return;
+        TareasList[index].titulo = nuevoTitulo;
+        TareasList[index].descripcion = nuevaDescripcion;
+        saveTareasToStorage(TareasList);
 
-    TareasList[index].tarea = nuevoNombre;
-    TareasList[index].descripcion = nuevaDesc;
-
-    saveTareasToStorage(TareasList);
-
-    etiquetaTitulo.textContent = nuevoNombre;
-
-    titulo = nuevoNombre;
-    descripcion = nuevaDesc;
+        etiquetaTitulo.textContent = nuevoTitulo;
+        titulo = nuevoTitulo;
+        descripcion = nuevaDescripcion;
     });
 
     btnEliminar.addEventListener("click", () => {
-        const index = TareasList.findIndex(t => t.tarea === titulo);
+        const index = TareasList.findIndex(t => t.titulo === titulo);
         if (index === -1) return;
 
-        const confirmar = confirm("¿Seguro que deseas eliminar esta tarea?");
-        if (!confirmar) return;
+        if (!confirm("¿Seguro que deseas eliminar esta tarea?")) return;
 
         TareasList.splice(index, 1);
         saveTareasToStorage(TareasList);
-
         div.remove();
     });
 
     return div;
-
-}
+};
 
 export { ItemTarea };

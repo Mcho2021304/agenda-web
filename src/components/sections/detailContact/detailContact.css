@@ -1,0 +1,193 @@
+/* Contenedor principal de la card */
+.contenedor-detailContact {
+    position: fixed; /* para centrar en pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* inicialmente oculta */
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #ffffff; /* fondo blanco */
+    border-radius: 16px;
+    border-left: 6px solid #3b82f6; /* rayita azul */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Cuando la card se muestra */
+.contenedor-detailContact.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Título de la card */
+.contenedor-detailContact h2 {
+    color: #1f2937;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Avatar del contacto */
+.imagen-contactos {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #CCD0CF;
+    border: 3px solid #3b82f6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Contenedor de info */
+.info-detalle {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.info-detalle h3 {
+    color: #1f2937;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.info-detalle p {
+    color: #4A5C6A;
+    font-size: 1.1rem;
+}
+
+.info-detalle p span {
+    font-weight: 600;
+    color: #3b82f6; /* azul para etiquetas */
+}
+
+/* Botón Regresar */
+.btn-regresarContact {
+    padding: 12px 25px;
+    background-color: #3b82f6; /* azul celeste */
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-regresarContact:hover {
+    background-color: #2563eb; /* azul más intenso al pasar */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Overlay para la card de detalle */
+.overlay-detailContact {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3); /* capa semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Card centrada */
+.detailCard {
+    background-color: #f8fafc; /* fondo claro */
+    border-left: 6px solid #3b82f6; /* borde azul */
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+/* Avatar dentro de la card */
+.detailCard .imagen-contactos {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Nombre del contacto */
+.detailCard .nombre-contacto {
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+/* Información del contacto */
+.detailCard .info-detalle p {
+    color: #4A5C6A;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.detailCard .info-detalle p span {
+    font-weight: bold;
+    color: #253745;
+}
+
+/* Botón regresar */
+.btn-regresarContact {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background-color: #3b82f6; /* celeste */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-regresarContact:hover {
+    background-color: #2563eb; /* azul más oscuro al pasar */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor-detailContact {
+        padding: 25px;
+    }
+
+    .imagen-contactos {
+        width: 100px;
+        height: 100px;
+    }
+
+    .info-detalle h3 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-detailContact {
+        padding: 20px;
+    }
+
+    .imagen-contactos {
+        width: 90px;
+        height: 90px;
+    }
+
+    .info-detalle h3 {
+        font-size: 1.2rem;
+    }
+}

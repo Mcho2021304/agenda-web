@@ -1,58 +1,70 @@
-/* Botón principal */
-.custom-button {
+/* Contenedor de cada tarea */
+.item-tarea {
     display: flex;
-    align-items: center;          /* centra verticalmente */
-    justify-content: center;      /* centra horizontalmente */
-    position: relative;           /* para posicionar elementos dentro */
-    width: 220px;
-    height: 56px;
-    border-radius: 10px;
-    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f8fafc;
+}
 
-    background: linear-gradient(135deg, #60a5fa, #2563eb);
-    border: 2px solid #60a5fa;
-    color: #ecfeff;
+/* Icono de tarea */
+.item-tarea .tarea-icono {
+    width: 40px;
+    height: 40px;
+}
+
+/* Título y prioridad */
+.item-tarea .tarea-titulo {
     font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    user-select: none;
-
-    box-shadow: 0 4px 8px rgba(255,255,255,0.2), 0 0 15px rgba(255,255,255,0.1);
-    transition: all 0.2s ease;
+    font-size: 1rem;
+    flex: 1;
 }
 
-/* Hover */
-.custom-button:hover {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    border-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.15);
-    transform: translateY(-2px);
+.item-tarea .tarea-prioridad {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #22c55e; /* puedes ajustar color según prioridad */
 }
 
-/* Active */
-.custom-button:active {
-    background: linear-gradient(135deg, #1e3a8a, #1e40af);
-    border-color: #e5e7eb;
-    box-shadow: 0 2px 6px rgba(255,255,255,0.15), inset 0 0 8px rgba(255,255,255,0.05);
-    transform: translateY(0);
-}
-
-/* Imagen dentro del botón */
-.button-image {
+/* Botones circulares */
+.item-tarea button.btn-editar,
+.item-tarea button.btn-eliminar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    position: absolute; /* posicionamos a la izquierda del botón */
-    left: 20px;
+    border: 2px solid #ffffff; /* borde blanco */
+    cursor: pointer;
 }
 
-/* Texto centrado */
-.button-text {
-    margin: 0;
-    font-size: 15px;
-    color: inherit;
-    text-align: center;
-    flex: 1; /* ocupa todo el espacio disponible */
+/* Fondo fijo */
+.item-tarea button.btn-editar {
+    background-color: #10b981; /* verde */
+}
+
+.item-tarea button.btn-eliminar {
+    background-color: #ef4444; /* rojo */
+}
+
+/* Iconos siempre blancos */
+.item-tarea button.btn-editar img,
+.item-tarea button.btn-eliminar img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* fuerza color blanco */
+}
+
+/* Hover solo escala, no cambia color ni borde */
+.item-tarea button.btn-editar:hover,
+.item-tarea button.btn-eliminar:hover {
+    transform: scale(1.1);
+    background-color: inherit; /* mantiene el color fijo */
+    border-color: #ffffff;      /* mantiene borde blanco */
 }

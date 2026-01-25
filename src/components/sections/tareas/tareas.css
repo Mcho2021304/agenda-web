@@ -1,41 +1,173 @@
+/* ======================
+   Contenedor de cada tarea
+====================== */
 .item-tarea {
     display: flex;
     align-items: center;
-    gap: 14px;
-    background-color: #1e293b; /* azul gris oscuro */
-    border-radius: 10px;
+    justify-content: space-between;
+    background-color: #f8fafc; /* gris muy claro */
+    border-left: 6px solid #3b82f6; /* azul por defecto */
+    border-radius: 8px;
     padding: 12px 16px;
-    border: 1px solid #334155;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     margin-bottom: 12px;
-    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Hover general */
 .item-tarea:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-.item-tarea-img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
+/* Icono de tarea */
+.item-tarea img.tarea-icono {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
 }
 
-.item-tarea-text {
+/* Checkbox */
+.item-tarea input.tarea-estado {
+    margin-right: 12px;
+    accent-color: #10b981; /* verde para completado */
+}
+
+/* Datos principales */
+.item-tarea .datos-tarea {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
 }
 
-.item-tarea-titulo {
-    font-size: 16px;
+/* Título */
+.item-tarea p.tarea-titulo {
     font-weight: 600;
-    color: #ffffff;
+    font-size: 1.05rem;
+    color: #1f2937; /* gris oscuro */
+    margin-bottom: 4px;
 }
 
-.item-tarea-prioridad {
-    font-size: 14px;
+/* Prioridad */
+.item-tarea p.tarea-prioridad {
     font-weight: 500;
-    color: #cbd5e1; /* gris claro */
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    width: fit-content;
+    color: #fff;
+}
+
+/* Colores según prioridad */
+.item-tarea[data-prioridad="alta"] {
+    border-left-color: #ef4444; /* rojo suave */
+}
+
+.item-tarea[data-prioridad="media"] {
+    border-left-color: #fbbf24; /* amarillo suave */
+}
+
+.item-tarea[data-prioridad="baja"] {
+    border-left-color: #10b981; /* verde */
+}
+
+.item-tarea[data-prioridad="alta"] p.tarea-prioridad {
+    background-color: #ef4444;
+}
+
+.item-tarea[data-prioridad="media"] p.tarea-prioridad {
+    background-color: #fbbf24;
+    color: #1f2937; /* gris oscuro sobre amarillo */
+}
+
+.item-tarea[data-prioridad="baja"] p.tarea-prioridad {
+    background-color: #10b981;
+}
+
+/* Botón descripción */
+.item-tarea button.tarea-descripcion {
+    background-color: #3b82f6; /* azul masculino */
+    color: #ffffff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-right: 6px;
+}
+
+.item-tarea button.tarea-descripcion:hover {
+    background-color: #2563eb;
+}
+
+/* Botón editar */
+.item-tarea button.btn-editar {
+    background-color: #10b981; /* verde fijo por defecto */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s ease;
+}
+
+/* Botón eliminar */
+.item-tarea button.btn-eliminar {
+    background-color: #ef4444; /* rojo fijo por defecto */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover: ambos botones cambian fondo a azul */
+.item-tarea button.btn-editar:hover,
+.item-tarea button.btn-eliminar:hover {
+    background-color: #3b82f6; /* azul brillante al pasar el cursor */
+}
+
+/* Opcional: agrandar iconos al hover */
+.item-tarea button.btn-editar:hover img,
+.item-tarea button.btn-eliminar:hover img,
+.item-tarea button.btn-editar:hover svg,
+.item-tarea button.btn-eliminar:hover svg {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+}
+
+
+
+
+
+/* Responsive: tablets y móviles */
+@media (max-width: 768px) {
+    .item-tarea button.btn-editar,
+    .item-tarea button.btn-eliminar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .item-tarea button.btn-editar img,
+    .item-tarea button.btn-eliminar img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-tarea button.btn-editar,
+    .item-tarea button.btn-eliminar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .item-tarea button.btn-editar img,
+    .item-tarea button.btn-eliminar img {
+        width: 20px;
+        height: 20px;
+    }
 }

@@ -1,7 +1,5 @@
-// dbTareas.js
-let TareasList = [
-    { titulo: "Hacer Storage", prioridad: "alta" },
-    { titulo: "Hacer Storage", prioridad: "media" }
-];
+import { getTareasFromStorage } from "../../common/localStorage/Storage.js";
+
+let TareasList = getTareasFromStorage("lista_de_tareas") || [];
 
 export { TareasList };

@@ -1,108 +1,134 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-}
-
-/* Formulario general */
+/* ===== FORMULARIO NUEVO CONTACTO ===== */
 .new-contact-form {
     width: 100%;
     max-width: 400px;
-    background-color: #1e293b; /* azul gris oscuro */
-    padding: 30px 25px;
-    border-radius: 12px;
-    border: 1px solid #334155; /* borde sutil */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    margin: 20px auto;
+    padding: 20px;
+
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    color: #f1f5f9; /* texto claro */
-    transition: all 0.3s ease;
+    gap: 12px;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.new-contact-form:hover {
-    box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Título del formulario */
+/* Título */
 .new-contact-form h2 {
-    font-size: 24px;
-    color: #ffffff; /* azul brillante */
-    text-align: center;
     margin-bottom: 10px;
-    text-shadow: 
-        0 0 3px #b0b0b0,   /* difuminado gris suave */
-        0 0 6px #888888;   /* difuminado más amplio */
+    text-align: center;
+    color: #333;
+    font-size: 1.4rem;
 }
 
-
-/* Labels */
+/* ===== LABELS ===== */
 .new-contact-form label {
-    font-size: 14px;
-    margin-bottom: 4px;
-    color: #cbd5e1; /* gris claro */
-}
-
-/* Inputs */
-.new-contact-form input {
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid #64748b; /* gris azuloso */
-    background-color: #0f172a; /* azul muy oscuro */
-    color: #f1f5f9;
-    font-size: 14px;
-    transition: all 0.2s ease;
-}
-
-.new-contact-form input:focus {
-    border-color: #38bdf8; /* azul brillante al enfocar */
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
-    outline: none;
-}
-
-/* Botones */
-.new-contact-form button {
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+    font-size: 0.9rem;
     font-weight: 600;
-    font-size: 15px;
-    transition: all 0.2s ease;
+    color: #555;
 }
 
-/* Botón Agregar */
+/* ===== INPUTS ===== */
+.new-contact-form input {
+    padding: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Focus */
+.new-contact-form input:focus,
+.new-contact-form input:focus-visible {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* ===== BOTONES ===== */
+.new-contact-form button {
+    padding: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Botón Guardar / Agregar */
 .new-contact-form button[type="submit"] {
-    background-color: #22c55e; /* verde llamativo */
-    color: #ffffff;
+    background-color: #3b82f6;
+    color: white;
 }
 
 .new-contact-form button[type="submit"]:hover {
-    background-color: #16a34a;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.5);
+    background-color: #2563eb;
+    transform: translateY(-1px);
 }
 
 /* Botón Cancelar */
 .new-contact-form button[type="button"] {
-    background-color: #ef4444; /* rojo suave */
-    color: #ffffff;
+    background-color: #e5e7eb;
+    color: #333;
 }
 
 .new-contact-form button[type="button"]:hover {
-    background-color: #b91c1c;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+    background-color: #d1d5db;
 }
 
-/* Espaciado entre botones */
-.new-contact-form button + button {
-    margin-top: 8px;
+/* ===== DESHABILITADO ===== */
+.new-contact-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
     .new-contact-form {
-        padding: 20px;
+        margin: 12px;
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    .new-contact-form h2 {
+        font-size: 1.2rem;
+    }
+
+    .new-contact-form label {
+        font-size: 0.85rem;
+    }
+
+    .new-contact-form input,
+    .new-contact-form button {
+        font-size: 0.9rem;
+        padding: 9px;
+    }
+}
+
+@media (max-width: 768px) {
+    .new-contact-form {
+        max-width: 100%;
+        margin: 16px;
     }
 }
