@@ -1,4 +1,4 @@
-import { ItemTarea } from "../../common/itemTarea/itemTarea.js";
+import { ItemTarea } from "../../common/itemTarea/ItemTarea.js"; 
 import { TareasList } from "./dbTareas.js";
 
 const Tareas = () => {
