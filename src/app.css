@@ -102,11 +102,11 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0f00af; /* azul más oscuro */
+    background-color: #0f00af; 
 }
 
 button[type="button"] {
-    background-color: #e5e7eb; /* gris claro */
+    background-color: #e5e7eb; 
     color: #1f2937;
 }
 
@@ -114,9 +114,6 @@ button[type="button"]:hover {
     background-color: #d1d5db;
 }
 
-/* ======================
-   Lista de tareas
-====================== */
 .tareas {
     display: flex;
     flex-direction: column;
@@ -171,11 +168,6 @@ button[type="button"]:hover {
     transform: scale(1.2);
 }
 
-
-
-/* ======================
-   Responsive
-====================== */
 
 /* Pantallas medianas */
 @media (max-width: 1024px) {

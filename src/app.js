@@ -35,7 +35,6 @@ nav.appendChild(Button("Crear Tarea",
     TareasList
 ));
  
-//section container
 let container = document.getElementById("container");
 
 container.innerHTML = "";
